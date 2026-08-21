@@ -106,8 +106,15 @@ class TurboScribeCleanerApp:
         self.listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.scrollbar.config(command=self.listbox.yview)
         
-        btn_limpiar = tk.Button(self.tab_limpieza, text="✨ Iniciar Limpieza", command=self.procesar_seleccion, font=("Segoe UI", 11, "bold"), bg="#4CAF50", fg="white", activebackground="#45a049", activeforeground="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
-        btn_limpiar.pack(pady=(0, 20))
+        # Frame para botones inferiores
+        frame_botones_inf = tk.Frame(self.tab_limpieza, bg=bg_color)
+        frame_botones_inf.pack(pady=(0, 20))
+
+        btn_limpiar = tk.Button(frame_botones_inf, text="✨ Iniciar Limpieza", command=self.procesar_seleccion, font=("Segoe UI", 11, "bold"), bg="#4CAF50", fg="white", activebackground="#45a049", activeforeground="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
+        btn_limpiar.pack(side=tk.LEFT, padx=(0, 10))
+
+        btn_abrir_salida = tk.Button(frame_botones_inf, text="📂 Abrir Carpeta de Salida", command=self.abrir_carpeta_salida, font=("Segoe UI", 11, "bold"), bg="#9C27B0", fg="white", activebackground="#7B1FA2", activeforeground="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
+        btn_abrir_salida.pack(side=tk.LEFT)
 
     def construir_tab_configuracion(self):
         bg_color = "#f4f4f9"
@@ -316,6 +323,21 @@ class TurboScribeCleanerApp:
         if procesados > 0:
             messagebox.showinfo("Proceso Terminado", f"¡Éxito! Se procesaron {procesados} archivo(s).\n\nOriginales movidos a 'original\\'\nLimpios guardados en 'limpio\\'")
             self.actualizar_lista_archivos() # Refresca la lista para quitar los que ya se movieron
+
+    def abrir_carpeta_salida(self):
+        if not self.carpeta_actual or not os.path.exists(self.carpeta_actual):
+            messagebox.showwarning("Advertencia", "No hay ninguna carpeta seleccionada o la carpeta no existe.")
+            return
+            
+        carpeta_limpio = os.path.join(self.carpeta_actual, "limpio")
+        if not os.path.exists(carpeta_limpio):
+            messagebox.showinfo("Información", "La carpeta de salida 'limpio' aún no existe. Ejecuta una limpieza primero.")
+            return
+            
+        try:
+            os.startfile(carpeta_limpio)
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo abrir la carpeta:\n{e}")
 
 def main():
     root = tk.Tk()

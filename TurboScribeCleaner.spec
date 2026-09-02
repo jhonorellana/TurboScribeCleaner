@@ -4,9 +4,9 @@
 a = Analysis(
     ['TurboScribeCleaner.py'],
     pathex=[],
-    binaries=[('C:\\ProgramData\\anaconda3\\Library\\bin\\tcl86t.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\tk86t.dll', '.')],
+    binaries=[('C:\\ProgramData\\anaconda3\\Library\\bin\\tcl86t.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\tk86t.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\libexpat.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\libxml2.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\libxslt.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\libexslt.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\liblzma.dll', '.'), ('C:\\ProgramData\\anaconda3\\Library\\bin\\libbz2.dll', '.')],
     datas=[],
-    hiddenimports=[],
+    hiddenimports=['docx'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

@@ -1,5 +1,6 @@
 {
     "carpeta_origen": "C:/Users/super/Downloads",
     "carpeta_salida": "C:/Users/super/Videos/PaymentEvolution/2026_09/txt",
-    "archivo_diccionario": "C:/Users/super/Videos/PaymentEvolution/2026_09/txt/Palabrascomunes/Palabrascomunes.csv"
+    "archivo_diccionario": "C:/Users/super/Videos/PaymentEvolution/2026_09/txt/Palabrascomunes/Palabrascomunes.csv",
+    "archivo_proyectos_chatgpt": "C:/Users/super/Videos/PaymentEvolution/2026_09/txt/Palabrascomunes/ProyectosChatGPT.csv"
 }

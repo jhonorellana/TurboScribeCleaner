@@ -1,107 +1,801 @@
-tattoo;TATU
-tato;TATU
-mojo;MOJA
-Ameet;Amit
-Amid;Amit
-IP;ePay
-offboarding assistant;Offboarding Assistant
-John;Jhon
-Jimena;Ximena
-Kavita;Kavitha
-Cavita;Kavitha
-BizPlus;Business Plus
-hearing;Year end
-company onboarding;Company Onboarding
-Kuga;Kruger
-reports;Reports
-Yeren;Year End
-Amik;Amit
-Moya;MOJA
-Shrey;Shreya
-Patreon;Payrun
-Checks and Payslips;Cheques & Payslips
-CUA;QA
-Payroll and history;Payrun History
-Payroll history;Payrun History
-Parent history;Payrun History
-Perun History;Payrun History
-Paychecker;PayChecker
-Hedl;Hetal
-PE;Payment Evolution
-V;Vuakpor
-Vee;Vuakpor
-peer;Pier
-eBay;ePay
-Jimani;Himani
-Cash Shell;Kaushal
+﻿a Hema;Ximena
+a MIT;Ameet
+access levers;Access Levels
+account and invoicing;Accountant Invoicing
+account channel;Accountant Channel
+add on feature;Add-on Feature
+add on tickets;add-on tokens
+Add ons;Add-ons
+add ons;Add-ons
+Admin API;AdminAPI
 admin API;AdminAPI
-Amith;Amit
-IFT;EFT
-hand file;HangFire
-Handfire;HangFire
-Twain;Twine
-Fromend;Frontend
-a MIT;Amit
-Baguette;Backend
-Paulita;Paola
-Pao;Paola
-look page;Loop Page
-HandFile;HangFire
-Payment Key;PaymentKey
-JOF;Job
-Jime;Ximena
-payroom;payrun
-Mojan;MOJA
-Bapu;Vuakpor
-Spring;Sprint
-Piddy;Vidhi
-employee explorer;Employee Explorer
-pay explorer;Pay Explorer
-sequel;SQL
-twin;Twine
-grades;credits
-car;Card
-cars;Cards
-hand-fired;HangFire
-Valley;Valli
-payment evolution;Payment Evolution
+Admin APIs;AdminAPI
+Admin App;AdminAPI
+admin April;AdminAPI
+Admin FI;AdminAPI
+Admin Happy;AdminAPI
+Admin IP;AdminAPI
+Admin NT;AdminAPI
+Admin PI;AdminAPI
+Admini API;AdminAPI
+Admini PI;AdminAPI
+AFT rejects;EFT Rejects
+AFT Sync;EFT Sync
+ANC Money Laundering;Anti-Money Laundering
+answering and laundering;Anti-Money Laundering
+Anthropic Cloud Design;Anthropic Claude
+Api de Valli;API de Valli
+API Integration;API integration
+Appian API;AdminAPI
+approval to sit;approval to SITA
+Attention Require;Attention Required
+Attention require;Attention Required
+Attention, Recall;Attention Required
+audit lock;audit log
+audit locks;Audit Logs
+average parent;average payrun
+Baby to;ePay V2
+Back End;Backend
+back issue;bug issue
+backlog mode;Backlog view
+base flips;Payslips
+Base Player;Pay Explorer
+Bass Player;Pay Explorer
 Bay Explorer;Pay Explorer
-Zero;Xero
+Being Evolution;PaymentEvolution
+beneficiary black list;Beneficiary Blacklist
+Beybo API;PayEvo API
+billing report;Billing Report
+Bing Evolution;PaymentEvolution
+black list;blacklist
+broad deployment;prod deployment
+broad issues;PROD issues
+burned data;hardcoded data
+business plus;Business Plus
+Business Plus Plus;Business Plus
+calculation data;calculated data
+Campanian Boarding;Company Onboarding
+cash miss;cache miss
+Cash Shell;Kaushal
+cash updated;cache updated
+CERE A;CRA
+Chat DBT;ChatGPT
+Chat DVD;ChatGPT
+chat GPT;ChatGPT
+Chat to BT;ChatGPT
+check paylips;Cheques & Payslips
+check some base tips;Cheques & Payslips
+check some page;Cheques & Payslips
+check some Payslips;Cheques & Payslips
+Checks and Paces;Cheques and Payslips
+checks and pays libs;Cheques & Payslips
+checks and payslip;Cheques & Payslips
+Checks and Payslips;Cheques & Payslips
+checks and Payslips;Cheques & Payslips
+checks and place lists;Cheques & Payslips
+cherry pick;cherry-pick
+Classic parent;Classic Payrun
+classic parent;Classic Payrun
+classic pay rooms;classic payruns
+classic payroll;Classic Payroll
+Classic payrolls;classic payruns
+Classic Payrun;Classic Payrun
+Client Account;ClientAccount
+Client Account Update;ClientAccount Update
+clock in;clock-in
+clock out;clock-out
+cloud account;Claude account
+cloud code;Claude Code
+Cloud Design;Claude design
+Cloud Flare;Cloudflare
+code marriage;code merge
+code match;Code Merge
+Coming zoom;Coming Soon
+company add on;Company Add-ons
+company onboarding;Company Onboarding
+company setting;Company Settings
+Company Stat;Company Stats
+Company Stats;Company Stats
+company stats;Company Stats
+condition sign-off;conditional sign-off
+conditional signup;conditional sign-off
+core review bot;code review bot
+Core Reviewer;Code Reviewer
+county company;accounting company
+CR A;CRA
+CRM remittance payment;CRA Remittance Payment
+Cross Company;Cross Company
+current spin;Current Sprint
+daily parent;daily payrun
+Danish ticket;Developer ticket
+Danny API;AdminAPI
+dashboard bot;dashboard bugs
+dashboard box tickets;Dashboard bug tickets
+dashboard bug to fix;Dashboard bugs to fix
+David Key;DebitKey
+DB ID;DBID
+DBID Autofix;EDI DBID AutoFix
+DD ID;DBID
+direct deposit;Direct Deposit
+Donut upgrade;Downgrade
+DPay records;ePay records
+e pay report;ePay Report
+edit en invoicing;edición en Invoicing
+EFT Batch;EFTBatch
+EFT sign;EFT Sync
+EFT Sing;EFT Sync
+EFT Sink;EFT Sync
+EFTY Eddie;EFT y EDI
+electric drag project;FINTRAC project
+email remainder;eMailReminders
+Email reminder;eMailReminders
+email reminder;eMailReminders
+Email Reminders;eMailReminders
+email reminders;eMailReminders
+employee explorer;Employee Explorer
+Employee idea;Employee ID
+empty state validations;Empty State validations
+Endo Period;End Period
+Entity State;Empty State
+EPA integration;ePay integration
+EPA status;ePay status
+ePay transaction;ePay Transaction
+EPI records;ePay records
+EPI Report: ePay Report;
+EPI Reports;ePay records
+ESP time;EST time
+ETA files;EFT files
+Explorer all plan features;Explore All Plan Features
+face lips;Payslips
+Facebook account;FreshBooks account
+fading tickets;failing tickets
+failed test;failed test
+fakes in numbers;fake SIN numbers
+Feature Paydate;Future Pay Date
+Felipe is a bandwidth;Felipe has bandwidth
+FINDRAC audit log;FINTRAC Audit Log
+fix the box;fix the bugs
+Fomis metodos;Funding Methods
+fresh book;FreshBooks
+Fresh Books;FreshBooks
+friend track;FINTRAC
+Front End;Frontend
+front track;FINTRAC
+FT Generation;EFT Generation
+FT Sync;EFT Sync
+full request;pull request
+full requests;pull requests
+Geo Location;Geolocation
+Growth and Basic;Growth and Business Basic
+hand file;HangFire
+Hand Fire;Hangfire
+Hang Fire;Hangfire
+hang fire;HangFire
+Hang flyer;HangFire
+Hangfire Dash Board;Hangfire Dashboard
+hard deathline;hard deadline
+harder to avoid;in order to avoid
+history points;story points
+home beta;Home Beta
+hope data;Home Beta
+hot pockets;hotspots
+I please to identify;I need to identify
+ID file;EDI file
+idea service;API service
+Identity 6;Identity Server 6
+impaired services;PRServices
+in payment or wired;e-payment or wire transfer
+In Queue;Enqueued
+IP IV too;ePay V2
+IP report;ePay Report
+journal Reports;Journal Reports
+Joy pendiente;ROE Pending
+JST Generation;EFT Generation
+level access;Access Level
+Lindo Period;End Period
+Lo Period;End Period
+loading from Database;loading from database
+look page;Loop Page
+loop page;Loop Page
+Loren Ibsen;Lorem Ipsum
+mail reminder;eMailReminders
+Mario Q;MRQ
+Mas Migration;Mass Migration
+Master role;MASTER role
+Master token;MASTER token
+Max Mine;MaxMind
+maximum parent;maximum payrun
+Mercury mitosis;MRQ Remittances
+merge on Moya;merge in MOJA
+mi gato;Ricardo
+Micro Sale;MicroZalen
+Midest Date;Missed State
+Mini PI;AdminAPI
+minimum parent;minimum payrun
+Miss State;Missed State
+missed cutoff;missed cut-off
+Mongo DB;MongoDB
+MongoDB logs;MongoDB Logs
+MongoDB logs;MongoDB logs
+monkey minimum;monthly minimum
+motor DLLs;MOJA DLLs
+move into TATU;promote to TATU
+my payer report;ePay Report
+my vault;my board
+net payroll manual instance;Net Payroll Manual Instance
+net payroll online instance;Net Payroll Online Instance
+new get;NuGet
+new paradigm;New Payrun
+New parent;New Payrun
+new parent;New Payrun
+new parents;New Payrun
+new payroll;New Payrun
+New Payrun;New Payrun
+next print;next sprint
+No Peguisos;No Permissions
+Not Start;Not Started
+notification widget;Notifications Widget
+NRO electronic payments;Number of Electronic Payments
+NRO remittances;Number of Remittances
+offboarding assistant;Offboarding Assistant
+old parent;Old Payrun
+on boarding;onboarding
+one pointer ticket;one-point ticket
+out it locks;Audit Logs
+out it logs;Audit Logs
+P Admin;PE Admin
+P Entity;PEntity
+P logger;PELogger
+P Utilities;PEUtilities
+Pack Validation;Bank Validation
+page explorer;Pay Explorer
+page explorer;PayExplorer
+page list;Payslips
+page slips;Payslips
+parent board;Pay Run board
+Parent history;Payrun History
+parent ID;Payrun ID
+parent is finalized;Payrun is finalized
+parent metadata;Payrun metadata
+parent summary;Payrun Summary
+parent team;Pay Run team
+parent total value;Pay Run total value
+Parole Specialist;Payroll Specialist
+Partially Complete;Partially Completed
+paste dips;Payslips
+PAT Agreement;PAD Agreement
+patron history report;Payrun History Report
+Paula Olmedo;Paola Olmedo
+Pay evil;PayEvo
+Pay Evo API;PayEvo API
+pay exploded;Pay Explorer
+pay explorer;Pay Explorer
+Pay roll;payroll
+pay room;payrun
+pay rooms;payruns
+pay rooms history;Payrun History
+pay run;Payrun
+pay run history;Payrun History
+Pay Slips;Payslips
+Pay slips;Payslips
+Pay slips Sync;Payslips Sync
+pay your own project;Payroll project
+Payable API;PayEvo API
+paye entity;PEEntity
+payer report;ePay Report
+PayEvo Explorer;Pay Explorer
+PayEvo history;Payrun History
+payevo web API;PayEvo Web API
+payment evolution;Payment Evolution
+Payment Evolution Utilities;PEUtilities
+Payment File;PaymentFile
+payment history Reports;Payrun History Report
+Payment ID;PaymentID
+Payment involution;PaymentEvolution
+Payment Key;PaymentKey
+Payment Revolution;PaymentEvolution
+Payment Validations;Payment Validation
+PaymentEvolution Entities;PEEntities
+Payments controller;Payments Controller
+Payroll and history;Payrun History
+payroll dashboard;Payroll Dashboard
+Payroll ear;Payroll year
+Payroll frequency;pay frequency
+payroll here;payroll year
+Payroll history;Payrun History
+Payroll run;payrun
+Payroll Stat;Payroll Stats
+Payroll year;Payroll Year
+Payrun History report;Payrun History Report
+Payrun metadata;Payrun Metadata
+pays libs;Payslips
+pays lips;Payslips
+Payslip Sync;Payslips Sync
+Pellevo Web API;PayEvo Web API
+Peran's side;parent side
+Permission label;Permission level
+Peron history;Payrun History
+Perro y;Payroll
+Perun History;Payrun History
+Philippines code;Felipe's code
+PI Entities;PEEntities
+PIA Services;PRServices
+PID Entities;PEEntities
+PID Logger;PELogger
+Pier Board;Payrun Board
+Pier report;PIER report
+Pier services;PRServices
+PIN track;FINTRAC
+place lists;payslips
+Play Explorer;Pay Explorer
+Play Steve Thinks;Payslips
+Post man;Postman
+PR Services;PRServices
+pr services;PRServices
+pre-authorized data;pre-authorized debit
+pre-authorized David;pre-authorized debit
+principio a fina;principio a fin
+print track;Fintrac
+procesamiento ED;EDI Processing
+Process IPs;Process ePay
+processed IP;Processed IP
+PRS Services;PRServices
+published Reports;Published Reports
+published reports;Published Reports
+Publishing Reports;Published Reports
+pull request mode;PR mode
+PVO agent;PayEvo agent
+Pymon Evolution;PaymentEvolution
+QBO Online;QuickBooks Online
+Quick Book;QuickBooks
+reach it to you;reach out to you
+Ref key;RefKey
+release notes;Release Notes
+Remittance Report;Remittance Report
+Remittance Reports;Remittance Reports
+Remittans de forma manual;Manual Remittances
+report billing;Report Billing
+Ricardo Aro;Ricardo Haro
+Ricardo Fumagio;Ricardo Fumachi
+Ricardo Hero;Ricardo Haro
+Richard Haro;Ricardo Haro
+role pending;ROE pending
+Rupali Jadav;Rupali Jadhav
+Sanction List;Sanctions List
+scope tests;smoke tests
+Scram Master;Scrum Master
+search criteria;Search Criteria
+Sequel to Twine;SQL to Twine
+Server Mode;Server Mode
+Server Mode;ServerMode
+ships and schedules;Shifts & Scheduling
+Sick Well;SQL
+sign of;sign-off
+sign off;Sign-off
+sign off;sign-off
+Snapshot Copy;Snapshot copy
+Software for Non-Profit;Software4Nonprofits
+somebody Reports;Summary Report
+SP Entities;PREntities
+SPR Service;PRServices
+Sprint plant;Sprint Planning
+staff holiday pay;statutory holiday pay
+story point;story points
+street tickets;three tickets
+Summary report;Summary Report
+summary report;Summary report
+summer Reports;Summary Report
+SYN numbers;SIN numbers
+Sync summary;Sync Summary
+Sync the Twine;Sync to Twine
+synchronization of Pagelifts;Payslips synchronization
+TATU 2;TATU
+tax provinces;Taxes per Province
+text and pay slip;Cheques & Payslips
+text and payslip;Cheques & Payslips
+they pay report;ePay Report
+this print;this sprint
+Three dot menu;Three-dot menu
+time off manager;Time Off Manager
+Time Sheet Manager;Timesheet Manager
+time tracker;Time Tracker
+Top Ties;Top Tiles
+toss a comment;post a comment
+total allocation story points;total allocated story points
+train snapshot;Twine Snapshot
+TVID Autofix;EDI DBID AutoFix
+TVL Quebec;TBL Quebec
+TVL Remittance Log;TBL Remittance Log
+TVL Remittance Reports;TBL Remittance Reports
+Twine to Sequel;Twine to SQL
+Unisys State;Missed State
+very faster;much faster
+Vuakpor as in Victor;V as in Victor
+walk on;work on
+warrant ticket;Warren ticket
+web punto config;web.config
+Ablation;absolutely
+ADI;EDI
+adminAPI;AdminAPI
+Aeron;Payrun
+Ahmed;Ameet
+Akita;Ankita
+Ali;Valli
+Amid;Ameet
+Amiga;Ameet
+Amik;Ameet
+Amil;Ameet
+Amir;Ameet
+Amit;Ameet
+Amita;Ameet
+Amith;Ameet
+Anir;Ameet
+anti-entity;PEntity
+antistates;Empty States
+AppSign;AppSync
+arroiris;ROEs
+assembris;assemblies
+atachados;attached
+AWGPT;EvoGPT
+Ayax;AJAX
+Bache;Badge
+Backoffice;Back Office
+bag;bug
+Bagend;Backend
+Bague;Badge
+Baguette;Backend
+Bali;Valli
+Bally;Valli
+Bankwalidation;Bank Validation
+Bapu;Vuakpor
+baselip;payslip
+baselips;Payslips
+Bindrack;Fintrac
+BitPacket;Bitbucket
+biutilities;PE Utilities
+BizPlus;Business Plus
+bloggers;blockers
+bloopers;blockers
+boar;board
+Bolf;Evolv
+borde;board
+Brawl;PROD
+broad;PROD
+business-based;Business Basic
+Cabita;Kavitha
+CanFireJobs;HangFire Jobs
+car;Card
+Carcel;Calendar
+cars;Cards
+Catu;TATU
+Cauchal;Kaushal
+Cavita;Kavitha
+Cavitán;Kavitha
+Cínstodo;Things To Do
+CIRA;CRA
 Ciro;Xero
-IPI;ePay
 CITA;SITA
 CITAD;SITA
-summary report;Summary report
-Iperi;ePay
-Amir;Amit
-paviments;payments
-TAT;TATU
-prod;production
-EFT5;EFT File
-business plus;Business Plus
-Maxine; Maxim
+clear;Clear
+clocking;clock-in
+Cloud;Claude
+Co-Pilot;Copilot
+CodeMerge;code merge
+Codmerch;Code Merge
+Contemplates;Templates
+CRE;CRA
+CREI;CRA
+CRI;CRA
+CUA;QA
 Cuba;QA
-Pageslips;Payslips
-Cauchal;Kaushal
-PaceLibs;Payslips
-HangFile;HangFire
-page slips;Payslips
-hang fire;HangFire
-page explorer;Pay Explorer
-hang fire;HangFire
+Curriente;Current
+Dan;Nam
+Datato;TATU
+Datto;TATU
+dayrooms;Payruns
+dbidfix;DBID fix
+DD;DB
+deathline;deadline
+Deploye;Deployed
+DFT;EFT
+diploid;deployed
+Disclosure;Disclosure
+Downgraint;Downgrade
+Drop;Draft
+Dynamics;Dynamics
+e-pay;ePay
+E-WGPT;EvoGPT
+eBay;ePay
+Ecor;Igor
+Eddie;EDI
+Eddy;EDI
+edify;EDI
+EFT5;EFT File
+EgoGPT;EvoGPT
+enpoint;endpoint
+Enricardo;Ricardo
+EP;ePay
+EPA;ePay
+Epay;ePay
+ePayB2;ePay V2
+ERI;EDI
+Erica;Erika
+ESD;EFT
+Evolv;Evolve
 Evolve;Evolv
-baselips;Payslips
-pr services;PRServices
-mint;Maint
-Hamed;Amit
-baselips;Payslips
-page explorer;PayExplorer
-Seed;Sid
+Examel;XML
+facelifts;Payslips
+Facelives;Payslips
+fade;Failed
+Faith;Fail
+Fendrag;Fintrac
+Fendrax;Fintrac
+fileshops;HangFire Jobs
+Filipe;Felipe
+Filme;Figma
+FINDRAC;FINTRAC
+Fintech;FINTRAC
+Fintrack;FINTRAC
+Fintrack;Fintrac
+FINTRAG;FINTRAC
+Fintrak;FINTRAC
+Fromend;Frontend
+FT;EFT
+Fullstack;Full Stack
+Gabita;Kavitha
+Graphana;Grafana
+Hamed;Ameet
+hand-fired;HangFire
+HandFile;HangFire
+Handfire;HangFire
+handfires;Hangfire
+Hanfire;Hangfire
+HangFile;HangFire
+hardcodeada;hardcoded
+He-Man;Himani
+hearing;Year end
+Hedl;Hetal
 HempFire;HangFire
 HempFireJob;HangFire Job
-P-Utilities;PEUtilities
+Himen;Ximena
+Himena;Ximena
+Huaring;Warren
+Humani;Himani
+Humphire;Hangfire
+idfiles;EDI files
+IDI;EDI
+IFT;EFT
+IFTC;EFT Sync
+IFTI;EFT
+IFTs;EFTs
+Interact;Interac
+invoicing;Invoicing
+invoising;Invoicing
+Ipali;Rupali
+Ipay;ePay
+Iperi;ePay
+IPI;ePay
+IRT-SANK;EFT Sync
+Jamf;Jhon
+Jamfire;Hangfire
+Jesus;Jesús
+Jetta;Hetal
+Jim;Ximena
+Jimani;Himani
+Jime;Ximena
+Jimena;Ximena
+Joe;Jhon
+JOF;Job
+John;Jhon
+Johnson;Jhon
+Kabita;Kavitha
+Kapita;Kavitha
+KashFlow;Kashoo
+Kavita;Kavitha
+Keita;Ankita
+Kimena;Ximena
+Krueger;Kruger
+Krupalu;Rupali
+Kuga;Kruger
+Lemarq;MRQ
+loadboarding;Onboarding
+Locker;Blocker
+Lockers;Blockers
+lookers;blockers
+Luke;Loop
+Mali;Valli
+MAPI;AdminAPI
+Maria;Mario
+Marquiu;MRQ
+Marquivo;MRQ
+máster;MASTER
+Maxine;Maxim
+MBC;MVC
+Mena;Ximena
+Mer;Merge
+merch;merge
+mergin;merging
 Mesh;Merge
-CanFireJobs;HangFire Jobs
-paste dips;Payslips
-fileshops;HangFire Jobs
-PIA Services;PRServices
+MicroSale;MicroZalen
+MINAPI;AdminAPI
+mint;Maint
+Mist;Missed
+Mocha;MOJA
+Moisha;MOJA
+Moja;MOJA
+Mojan;MOJA
+Mojar;MOJA
+Mojaret;MOJA
+Mojatato;MOJA to TATU
+Mojave;MOJA
+mojo;MOJA
+Moya;MOJA
+Moza;MOJA
+Mozart;MOJA
+MQ;MRQ
+MRU;MRQ
+Nan;Nam
+Nextprint;next sprint
+Nia;Mia
+Niarb;Nirav
+Nirv;Nirav
+Noipay;No ePay
+Noja;MOJA
+P-services;PServices
+P-Utilities;PEUtilities
+PaceLibs;Payslips
+Pagelifts;Payslips
+Pageslips;Payslips
+Pali;Rupali
+Pam;Nam
+Pao;Paola
+Paolita;Paola
+parent;Payrun
+Parole;Payroll
+Patreon;Payrun
+Paul;Paola
+Paula;Paola
+Paulina;Polina
+Paulita;Paola
+paviments;payments
+payable;PayEvo
+Paychecker;PayChecker
+PayEgo;PayEvo
+paylips;Payslips
+Payone;Payroll
+Payron;Pay run
+Payront;Pay run
+Payronts;Pay runs
+payroom;payrun
+payrooms;Payruns
+Payround;Pay run
+Payrounds;Pay runs
+payslips;Payslips
+payslits;Payslips
+Paywal;Paywall
+Payway;Paywall
+PE;Payment Evolution
+peer;Pier
+Pentrac;Fintrac
+Peren;Payrun
+Perran;Pay run
+Perro;Payroll
+Perros;Payroll
+Peru;payrun
+Perun;Payrun
+Philippa;Felipe
+Philippe;Felipe
+Philippines;Felipe's
+Piddy;Vidhi
+Pintak;FINTRAC
+Pintrack;FINTRAC
+piquete;ticket
+playwright;Playwright
+playwrights;Playwright
+plus-customer;Business Plus customer
+Polita;Paolita
+pre-run;Payrun
+PREntities;PEEntities
+PRH;Payrun History
+Primaching;Pre-matching
+Prisolder;Placeholder
+prod;production
+production;PROD
+profits;provinces
+Province;Province Tax
+PRT;PRD
+PSLips;Payslips
+Pupali;Rupali
+QED;Queued
+Qubeq;Quebec
+Queue;Queued
+Ramitances;Remittances
+Ramitas;Remittances
+Rapali;Rupali
+Reconcile;Reconciled
+Recurente;recurrente
+Remitance;Remittance
+Remitans;Remittance
+Remitas;Remittances
+Remiten;Remittance
+Remittans;Remittances
+Remmitance;Remittance
+reports;Reports
+Rishaya;Richa
+ROV;ROE
+Rudyuk;Rupali
+Rupally;Rupali
+Sabarno;Subarno
+Sadist;Sid
+Samarin;Samrin
+Samreen;Samrin
+Sanctionless;Sanctions List
+sango;rango
+SASU;SASSU
+Seed;Sid
+sequel;SQL
+Seto;SITA
+Shane;Shreya
+Sharia;Shreya
+Shimani;Himani
+Shine;Twine
+ShipLeft;Shift Left
+Shrey;Shreya
+Sibarno;Subarno
+SpeedTrack;FINTRAC
+Spring;Sprint
+Sprinter;Sprint
+Subarnu;Subarno
+Subaru;Subarno
+SYN;SIN
+Synchronization;Synchronization
+TACO;TATU
+TACU;TATU
+Tapu;TATU
+Tartu;TATU
+TAT;TATU
+tato;TATU
+Tatoo;TATU
+tatto;TATU
+Tattoo;TATU
+tattoo;TATU
+Tattu;TATU
+Tatu;TATU
+Tatuto;TATU
+ThinTrack;Fintrac
+Tim;team
+Titan;TATU
+TMRQ;MRQ
+Train;Twine
+Treya;Shreya
+Tripoli;Rupali
+TVL;TBL
+Twain;Twine
+Twin;Twine
+twin;Twine
+TwinASQL;Twine to SQL
+twine;Twine
+Twinsync;Twine SQL Sync
+Umbrad;Brad
+Unboarding;Offboarding
+V;Vuakpor
+Vagend;Backend
+Vali;Valli
+Valley;Valli
+Vee;Vuakpor
+Ventrac;FINTRAC
+versionamiento;versioning
+Wally;Valli
+Waring;Warren
+Witches;Widgets
+Wolf;Evolve
+worrying;Warren
+Xime;Ximena
+Yargos;Yarhoslav
+Yarin;YearEnd
+Yarola;Yarhoslav
+Yaros;Yarhos
+Yarov;Yarhoslav
+Yeren;Year End
+Yolocation;Geolocation
+Zero;Xero

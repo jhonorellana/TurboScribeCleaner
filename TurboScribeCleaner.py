@@ -10,6 +10,7 @@ import zipfile
 import docx
 from datetime import datetime
 import webbrowser
+import unicodedata
 
 class TurboScribeCleanerApp:
     def __init__(self, root):
@@ -138,7 +139,13 @@ class TurboScribeCleanerApp:
         btn_limpiar.pack(side=tk.LEFT, padx=(0, 10))
 
         btn_abrir_salida = tk.Button(frame_botones_inf, text="📂 Abrir Carpeta de Salida", command=self.abrir_carpeta_salida, font=("Segoe UI", 11, "bold"), bg="#9C27B0", fg="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
-        btn_abrir_salida.pack(side=tk.LEFT)
+        btn_abrir_salida.pack(side=tk.LEFT, padx=(0, 10))
+
+        btn_ordenar_dicc = tk.Button(frame_botones_inf, text="🧹 Ordenar Diccionario", command=self.ordenar_archivo_diccionario, font=("Segoe UI", 11, "bold"), bg="#FF9800", fg="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
+        btn_ordenar_dicc.pack(side=tk.LEFT, padx=(0, 10))
+
+        btn_abrir_dicc = tk.Button(frame_botones_inf, text="📄 Abrir Diccionario", command=self.abrir_archivo_diccionario, font=("Segoe UI", 11, "bold"), bg="#009688", fg="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
+        btn_abrir_dicc.pack(side=tk.LEFT)
 
     def construir_tab_configuracion(self):
         bg_color = "#f4f4f9"
@@ -178,7 +185,10 @@ class TurboScribeCleanerApp:
         
         tk.Label(frame_dicc, text="Archivo de Diccionario (CSV):", bg=bg_color, font=("Segoe UI", 10)).pack(anchor="w")
         
-        self.entry_diccionario = tk.Entry(frame_dicc, font=("Segoe UI", 10))
+        frame_dicc_input = tk.Frame(frame_dicc, bg=bg_color)
+        frame_dicc_input.pack(fill=tk.X, pady=(2, 0))
+
+        self.entry_diccionario = tk.Entry(frame_dicc_input, font=("Segoe UI", 10))
         self.entry_diccionario.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
         
         # Cargar diccionario default de config si existe, sino, poner el default local
@@ -192,7 +202,13 @@ class TurboScribeCleanerApp:
             
         self.entry_diccionario.insert(0, dicc_guardado)
         
-        btn_browse_dicc = tk.Button(frame_dicc, text="Examinar", command=self.buscar_diccionario_config, bg="#e0e0e0", relief=tk.FLAT, cursor="hand2")
+        btn_abrir_dicc_cfg = tk.Button(frame_dicc_input, text="📄 Abrir", command=self.abrir_archivo_diccionario, bg="#009688", fg="white", font=("Segoe UI", 9, "bold"), relief=tk.FLAT, padx=10, cursor="hand2")
+        btn_abrir_dicc_cfg.pack(side=tk.RIGHT, padx=(5, 0))
+
+        btn_ordenar_dicc_cfg = tk.Button(frame_dicc_input, text="🧹 Ordenar Diccionario", command=self.ordenar_archivo_diccionario, bg="#4CAF50", fg="white", font=("Segoe UI", 9, "bold"), relief=tk.FLAT, padx=10, cursor="hand2")
+        btn_ordenar_dicc_cfg.pack(side=tk.RIGHT, padx=(5, 0))
+
+        btn_browse_dicc = tk.Button(frame_dicc_input, text="Examinar", command=self.buscar_diccionario_config, bg="#e0e0e0", relief=tk.FLAT, cursor="hand2")
         btn_browse_dicc.pack(side=tk.RIGHT)
         
         # --- Archivo Proyectos ChatGPT ---
@@ -252,6 +268,134 @@ class TurboScribeCleanerApp:
             self.actualizar_lista_archivos()
             
         self.carpeta_salida_actual = self.config["carpeta_salida"]
+
+    def obtener_ruta_diccionario_actual(self):
+        ruta_csv = ""
+        if hasattr(self, 'entry_diccionario') and self.entry_diccionario.get().strip():
+            ruta_csv = self.entry_diccionario.get().strip()
+        elif self.config.get("archivo_diccionario", "").strip():
+            ruta_csv = self.config.get("archivo_diccionario", "").strip()
+        else:
+            if getattr(sys, 'frozen', False):
+                ruta_script = os.path.dirname(sys.executable)
+            else:
+                ruta_script = os.path.dirname(os.path.abspath(__file__))
+            ruta_csv = os.path.join(ruta_script, "Palabrascomunes.csv")
+        return ruta_csv
+
+    def ordenar_archivo_diccionario(self):
+        ruta_csv = self.obtener_ruta_diccionario_actual()
+        if not ruta_csv or not os.path.exists(ruta_csv):
+            messagebox.showwarning("Advertencia", f"No se encontró el archivo de diccionario en:\n{ruta_csv}\n\nPor favor, verifica la ruta configurada en la pestaña 'Configuración'.")
+            if hasattr(self, 'notebook'):
+                self.notebook.select(2)
+            return
+
+        if not messagebox.askyesno(
+            "Ordenar Diccionario",
+            f"¿Deseas ordenar y limpiar el archivo de diccionario?\n\n{ruta_csv}\n\n"
+            "Se organizarán primero las frases (2 o más palabras) y después las palabras simples en orden alfabético, eliminando líneas duplicadas."
+        ):
+            return
+
+        try:
+            with open(ruta_csv, mode='r', encoding='utf-8-sig') as f:
+                linea = f.readline()
+                f.seek(0)
+                delim = ';' if ';' in linea else ','
+                reader = csv.reader(f, delimiter=delim)
+                filas_leidas = list(reader)
+
+            if not filas_leidas:
+                messagebox.showinfo("Información", "El archivo de diccionario está vacío.")
+                return
+
+            cabecera = None
+            primera_fila = filas_leidas[0]
+            if len(primera_fila) >= 2:
+                col0 = primera_fila[0].strip().lower()
+                col1 = primera_fila[1].strip().lower()
+                palabras_cabecera_0 = {'incorrecto', 'palabra_incorrecta', 'palabra', 'original', 'clave', 'termino'}
+                palabras_cabecera_1 = {'correcto', 'palabra_correcta', 'reemplazo', 'valor', 'significado'}
+                if col0 in palabras_cabecera_0 and col1 in palabras_cabecera_1:
+                    cabecera = [primera_fila[0].strip(), primera_fila[1].strip()]
+                    filas_datos = filas_leidas[1:]
+                else:
+                    filas_datos = filas_leidas
+            else:
+                filas_datos = filas_leidas
+
+            seen = set()
+            unique_rows = []
+            duplicados = 0
+
+            for row in filas_datos:
+                if len(row) >= 2:
+                    k = row[0].strip()
+                    v = row[1].strip()
+                    if not k:
+                        continue
+                    par = (k, v)
+                    if par in seen:
+                        duplicados += 1
+                    else:
+                        seen.add(par)
+                        unique_rows.append(par)
+
+            def clave_orden(par):
+                termino = par[0].strip()
+                nfkd = unicodedata.normalize('NFKD', termino.lower())
+                base = ''.join(c for c in nfkd if not unicodedata.combining(c))
+                return (base, termino.lower(), termino, par[1].lower(), par[1])
+
+            frases = [r for r in unique_rows if len(r[0].split()) > 1]
+            palabras_simples = [r for r in unique_rows if len(r[0].split()) <= 1]
+
+            frases.sort(key=clave_orden)
+            palabras_simples.sort(key=clave_orden)
+
+            total_ordenado = frases + palabras_simples
+
+            # Crear copia de respaldo
+            ruta_bak = ruta_csv + ".bak"
+            shutil.copy2(ruta_csv, ruta_bak)
+
+            # Escribir a archivo temporal y reemplazar atómicamente
+            ruta_tmp = ruta_csv + ".tmp"
+            with open(ruta_tmp, mode='w', encoding='utf-8-sig', newline='') as f:
+                writer = csv.writer(f, delimiter=delim, lineterminator='\n')
+                if cabecera:
+                    writer.writerow(cabecera)
+                for par in total_ordenado:
+                    writer.writerow(par)
+
+            os.replace(ruta_tmp, ruta_csv)
+
+            messagebox.showinfo(
+                "Diccionario Ordenado",
+                f"El archivo de diccionario ha sido ordenado y limpiado exitosamente.\n\n"
+                f"• Frases ordenadas (2+ palabras): {len(frases)}\n"
+                f"• Palabras simples ordenadas: {len(palabras_simples)}\n"
+                f"• Entradas duplicadas eliminadas: {duplicados}\n"
+                f"• Total de entradas guardadas: {len(total_ordenado)}\n\n"
+                f"Archivo:\n{ruta_csv}\n\n"
+                f"(Se creó una copia de respaldo en {os.path.basename(ruta_bak)})"
+            )
+        except Exception as e:
+            messagebox.showerror("Error", f"Ocurrió un error al ordenar el archivo de diccionario:\n{e}")
+
+    def abrir_archivo_diccionario(self):
+        ruta_csv = self.obtener_ruta_diccionario_actual()
+        if not ruta_csv or not os.path.exists(ruta_csv):
+            messagebox.showwarning("Advertencia", f"No se encontró el archivo de diccionario en:\n{ruta_csv}\n\nPor favor, verifica la ruta configurada en la pestaña 'Configuración'.")
+            if hasattr(self, 'notebook'):
+                self.notebook.select(2)
+            return
+
+        try:
+            os.startfile(ruta_csv)
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo abrir el archivo de diccionario:\n{e}")
 
     def cargar_diccionario(self, ruta_csv):
         diccionario = {}
@@ -419,15 +563,15 @@ class TurboScribeCleanerApp:
             messagebox.showwarning("Advertencia", "Por favor, selecciona al menos un archivo de la lista.")
             return
             
-        ruta_csv_default = self.config.get("archivo_diccionario", "")
+        ruta_csv_default = self.obtener_ruta_diccionario_actual()
         if not ruta_csv_default or not os.path.exists(ruta_csv_default):
             messagebox.showwarning("Advertencia", f"No se encontró el diccionario en:\n{ruta_csv_default}\n\nPor favor, configúralo en la pestaña 'Configuración'.")
-            self.notebook.select(1) # Cambia a la pestaña de configuración
+            self.notebook.select(2) # Cambia a la pestaña de configuración
             return
 
         if not self.carpeta_salida_actual or not os.path.exists(self.carpeta_salida_actual):
             messagebox.showwarning("Advertencia", "No has configurado una Carpeta de Salida válida.\n\nPor favor, configúrala en la pestaña 'Configuración'.")
-            self.notebook.select(1)
+            self.notebook.select(2)
             return
 
         diccionario = self.cargar_diccionario(ruta_csv_default)

@@ -63,6 +63,22 @@ class TurboScribeCleanerApp:
             self.lbl_ruta.config(text=f"Carpeta: {self.carpeta_actual}")
             self.actualizar_lista_archivos()
 
+        # Refrescar automáticamente al cambiar de pestaña
+        self.notebook.bind("<<NotebookTabChanged>>", self.al_cambiar_tab)
+
+    def al_cambiar_tab(self, event=None):
+        try:
+            tab_seleccionada = self.notebook.select()
+            if not tab_seleccionada:
+                return
+            idx = self.notebook.index(tab_seleccionada)
+            if idx == 0:  # ✨ Limpieza
+                self.actualizar_lista_archivos()
+            elif idx == 1:  # 🤖 Integración ChatGPT
+                self.actualizar_lista_archivos_limpios()
+        except Exception:
+            pass
+
     def obtener_ruta_config(self):
         if getattr(sys, 'frozen', False):
             ruta_script = os.path.dirname(sys.executable)
@@ -465,6 +481,25 @@ class TurboScribeCleanerApp:
 
         return datetime.now().strftime('%Y_%m_%d')
 
+    def nombre_tiene_fecha(self, nombre):
+        meses = r'(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)'
+        patrones_fecha = [
+            # YYYY[ _.-]MM[ _.-]DD (ej. 2026_10_28, 2026 10 28, 2026-10-28, 2026.10.28)
+            r'(?:^|[\s_\.-])(19\d\d|20\d\d)[ _\.-](0[1-9]|1[0-2])[ _\.-](0[1-9]|[12]\d|3[01])(?:$|[\s_\.-])',
+            # DD[ _.-]MM[ _.-]YYYY (ej. 28_10_2026, 28 10 2026, 28-10-2026, 28.10.2026)
+            r'(?:^|[\s_\.-])(0[1-9]|[12]\d|3[01])[ _\.-](0[1-9]|1[0-2])[ _\.-](19\d\d|20\d\d)(?:$|[\s_\.-])',
+            # YYYYMMDD compacto (ej. 20261028)
+            r'(?:^|[\s_\.-])(19\d\d|20\d\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?:$|[\s_\.-])',
+            # DD Mes YYYY (ej. 28 de octubre 2026, 28 Oct 2026)
+            r'(?:^|[\s_\.-])(\d{1,2})\s*(?:de\s+)?' + meses + r'\s*(?:de\s+|,\s*)?(19\d\d|20\d\d)(?:$|[\s_\.-])',
+            # Mes DD YYYY (ej. October 28 2026, Oct 28, 2026)
+            r'(?:^|[\s_\.-])' + meses + r'\s+(\d{1,2})\s*(?:de\s+|,\s*)?(19\d\d|20\d\d)(?:$|[\s_\.-])'
+        ]
+        for pat in patrones_fecha:
+            if re.search(pat, nombre, re.IGNORECASE):
+                return True
+        return False
+
     def limpiar_archivo(self, ruta_entrada, carpeta_limpio, carpeta_original, diccionario):
         try:
             _, ext = os.path.splitext(ruta_entrada)
@@ -481,7 +516,7 @@ class TurboScribeCleanerApp:
                     contenido = f.read()
                 ext_salida = ext
 
-            if re.match(r'^\d{4}[_-]\d{2}[_-]\d{2}', nombre_base):
+            if self.nombre_tiene_fecha(nombre_base):
                 nuevo_nombre_archivo = f"{nombre_base}{ext_salida}"
                 nuevo_nombre_original = archivo_original
             else:
@@ -528,7 +563,12 @@ class TurboScribeCleanerApp:
         self.archivos_datos = []
         
         if not self.carpeta_actual or not os.path.exists(self.carpeta_actual):
+            if hasattr(self, 'lbl_ruta'):
+                self.lbl_ruta.config(text="Carpeta: Ninguna seleccionada")
             return
+            
+        if hasattr(self, 'lbl_ruta'):
+            self.lbl_ruta.config(text=f"Carpeta: {self.carpeta_actual}")
             
         extensiones_validas = {'.txt', '.srt', '.csv', '.vtt', '.zip', '.docx'}
         

@@ -233,18 +233,47 @@ class TurboScribeCleanerApp:
         
         tk.Label(frame_chatgpt, text="Archivo Proyectos ChatGPT (CSV):", bg=bg_color, font=("Segoe UI", 10)).pack(anchor="w")
         
-        self.entry_diccionario_chatgpt = tk.Entry(frame_chatgpt, font=("Segoe UI", 10))
+        frame_chatgpt_input = tk.Frame(frame_chatgpt, bg=bg_color)
+        frame_chatgpt_input.pack(fill=tk.X, pady=(2, 0))
+
+        self.entry_diccionario_chatgpt = tk.Entry(frame_chatgpt_input, font=("Segoe UI", 10))
         self.entry_diccionario_chatgpt.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
         
         dicc_chatgpt_guardado = self.config.get("archivo_proyectos_chatgpt", "")
         self.entry_diccionario_chatgpt.insert(0, dicc_chatgpt_guardado)
         
-        btn_browse_chatgpt = tk.Button(frame_chatgpt, text="Examinar", command=self.buscar_diccionario_chatgpt_config, bg="#e0e0e0", relief=tk.FLAT, cursor="hand2")
+        btn_abrir_chatgpt_cfg = tk.Button(frame_chatgpt_input, text="📄 Abrir", command=self.abrir_archivo_chatgpt_config, bg="#009688", fg="white", font=("Segoe UI", 9, "bold"), relief=tk.FLAT, padx=10, cursor="hand2")
+        btn_abrir_chatgpt_cfg.pack(side=tk.RIGHT, padx=(5, 0))
+
+        btn_browse_chatgpt = tk.Button(frame_chatgpt_input, text="Examinar", command=self.buscar_diccionario_chatgpt_config, bg="#e0e0e0", relief=tk.FLAT, cursor="hand2")
         btn_browse_chatgpt.pack(side=tk.RIGHT)
+        
+        # --- Archivo Nombres Comunes ---
+        frame_archivos_comunes = tk.Frame(self.tab_configuracion, bg=bg_color)
+        frame_archivos_comunes.pack(fill=tk.X, padx=20, pady=5)
+        
+        tk.Label(frame_archivos_comunes, text="Archivo Nombres de Archivos Comunes (CSV):", bg=bg_color, font=("Segoe UI", 10)).pack(anchor="w")
+        
+        frame_archivos_comunes_input = tk.Frame(frame_archivos_comunes, bg=bg_color)
+        frame_archivos_comunes_input.pack(fill=tk.X, pady=(2, 0))
+
+        self.entry_archivos_comunes = tk.Entry(frame_archivos_comunes_input, font=("Segoe UI", 10))
+        self.entry_archivos_comunes.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
+        
+        archivos_comunes_guardado = self.config.get("archivo_archivos_comunes", "")
+        if not archivos_comunes_guardado:
+            archivos_comunes_guardado = self.obtener_ruta_archivos_comunes_actual()
+        self.entry_archivos_comunes.insert(0, archivos_comunes_guardado)
+        
+        btn_abrir_archivos_comunes_cfg = tk.Button(frame_archivos_comunes_input, text="📄 Abrir", command=self.abrir_archivo_archivos_comunes, bg="#009688", fg="white", font=("Segoe UI", 9, "bold"), relief=tk.FLAT, padx=10, cursor="hand2")
+        btn_abrir_archivos_comunes_cfg.pack(side=tk.RIGHT, padx=(5, 0))
+
+        btn_browse_archivos_comunes = tk.Button(frame_archivos_comunes_input, text="Examinar", command=self.buscar_archivos_comunes_config, bg="#e0e0e0", relief=tk.FLAT, cursor="hand2")
+        btn_browse_archivos_comunes.pack(side=tk.RIGHT)
         
         # --- Boton Guardar ---
         btn_guardar = tk.Button(self.tab_configuracion, text="💾 Guardar Configuración", command=self.guardar_cambios_configuracion, font=("Segoe UI", 10, "bold"), bg="#2196F3", fg="white", relief=tk.FLAT, padx=15, pady=8, cursor="hand2")
-        btn_guardar.pack(pady=40)
+        btn_guardar.pack(pady=25)
 
     def buscar_carpeta_origen_config(self):
         carpeta = filedialog.askdirectory(title="Seleccionar carpeta de origen por defecto")
@@ -270,11 +299,44 @@ class TurboScribeCleanerApp:
             self.entry_diccionario_chatgpt.delete(0, tk.END)
             self.entry_diccionario_chatgpt.insert(0, archivo)
 
+    def buscar_archivos_comunes_config(self):
+        archivo = filedialog.askopenfilename(title="Seleccionar Archivo de Nombres Comunes (CSV)", filetypes=[("Archivos CSV", "*.csv")])
+        if archivo:
+            self.entry_archivos_comunes.delete(0, tk.END)
+            self.entry_archivos_comunes.insert(0, archivo)
+
+    def abrir_archivo_archivos_comunes(self):
+        ruta_csv = self.obtener_ruta_archivos_comunes_actual()
+        if not ruta_csv or not os.path.exists(ruta_csv):
+            messagebox.showwarning("Advertencia", f"No se encontró el archivo de nombres de archivos comunes en:\n{ruta_csv}\n\nPor favor, verifica la ruta configurada en la pestaña 'Configuración'.")
+            if hasattr(self, 'notebook'):
+                self.notebook.select(2)
+            return
+
+        try:
+            os.startfile(ruta_csv)
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo abrir el archivo:\n{e}")
+
+    def abrir_archivo_chatgpt_config(self):
+        ruta_csv = self.entry_diccionario_chatgpt.get().strip() if hasattr(self, 'entry_diccionario_chatgpt') and self.entry_diccionario_chatgpt.get().strip() else self.config.get("archivo_proyectos_chatgpt", "")
+        if not ruta_csv or not os.path.exists(ruta_csv):
+            messagebox.showwarning("Advertencia", f"No se encontró el archivo de proyectos ChatGPT en:\n{ruta_csv}\n\nPor favor, verifica la ruta configurada en la pestaña 'Configuración'.")
+            if hasattr(self, 'notebook'):
+                self.notebook.select(2)
+            return
+
+        try:
+            os.startfile(ruta_csv)
+        except Exception as e:
+            messagebox.showerror("Error", f"No se pudo abrir el archivo:\n{e}")
+
     def guardar_cambios_configuracion(self):
         self.config["carpeta_origen"] = self.entry_carpeta_origen.get()
         self.config["carpeta_salida"] = self.entry_carpeta_salida.get()
         self.config["archivo_diccionario"] = self.entry_diccionario.get()
         self.config["archivo_proyectos_chatgpt"] = self.entry_diccionario_chatgpt.get()
+        self.config["archivo_archivos_comunes"] = self.entry_archivos_comunes.get()
         self.guardar_configuracion()
         
         # Sincronizar con estado actual
@@ -298,6 +360,80 @@ class TurboScribeCleanerApp:
                 ruta_script = os.path.dirname(os.path.abspath(__file__))
             ruta_csv = os.path.join(ruta_script, "Palabrascomunes.csv")
         return ruta_csv
+
+    def obtener_ruta_archivos_comunes_actual(self):
+        ruta_csv = ""
+        if hasattr(self, 'entry_archivos_comunes') and self.entry_archivos_comunes.get().strip():
+            ruta_csv = self.entry_archivos_comunes.get().strip()
+        elif self.config.get("archivo_archivos_comunes", "").strip():
+            ruta_csv = self.config.get("archivo_archivos_comunes", "").strip()
+        else:
+            if getattr(sys, 'frozen', False):
+                ruta_script = os.path.dirname(sys.executable)
+            else:
+                ruta_script = os.path.dirname(os.path.abspath(__file__))
+            candidatos = [
+                os.path.join(ruta_script, "archivosConfiguracion", "ArchivosComunes.csv"),
+                os.path.join(ruta_script, "ArchivosComunes.csv")
+            ]
+            for c in candidatos:
+                if os.path.exists(c):
+                    ruta_csv = c
+                    break
+            if not ruta_csv:
+                ruta_csv = os.path.join(ruta_script, "ArchivosComunes.csv")
+        return ruta_csv
+
+    def cargar_archivos_comunes(self, ruta_csv):
+        reemplazos = []
+        if not ruta_csv or not os.path.exists(ruta_csv):
+            return reemplazos
+        try:
+            with open(ruta_csv, mode='r', encoding='utf-8-sig') as f:
+                linea = f.readline()
+                f.seek(0)
+                delim = ';' if ';' in linea else ','
+                reader = csv.reader(f, delimiter=delim)
+                filas = list(reader)
+                if not filas:
+                    return reemplazos
+
+                primera_fila = filas[0]
+                filas_datos = filas
+                if len(primera_fila) >= 2:
+                    col0 = primera_fila[0].strip().lower()
+                    col1 = primera_fila[1].strip().lower()
+                    headers_buscar = {'original', 'nombre_original', 'buscar', 'patron', 'archivo_original', 'nombre', 'palabra_clave'}
+                    headers_reemplazo = {'nuevo', 'nombre_nuevo', 'reemplazo', 'cortado', 'corto', 'archivo_nuevo', 'nombre_proyecto'}
+                    if col0 in headers_buscar and col1 in headers_reemplazo:
+                        filas_datos = filas[1:]
+
+                for row in filas_datos:
+                    if len(row) >= 2:
+                        buscar = row[0].strip()
+                        reemplazar = row[1].strip()
+                        if buscar:
+                            reemplazos.append((buscar, reemplazar))
+        except Exception as e:
+            print(f"Error al cargar archivos comunes: {e}")
+        return reemplazos
+
+    def transformar_nombre_archivo(self, nombre_base, reemplazos):
+        if not reemplazos or not nombre_base:
+            return nombre_base
+
+        reemplazos_ordenados = sorted(reemplazos, key=lambda x: len(x[0]), reverse=True)
+
+        nombre_actual = nombre_base
+        for buscar, reemplazo in reemplazos_ordenados:
+            partes = [re.escape(part) for part in re.split(r'[\s_]+', buscar.strip()) if part]
+            if not partes:
+                continue
+            patron_regex = r'[\s_]+'.join(partes)
+            nombre_actual = re.sub(patron_regex, reemplazo, nombre_actual, flags=re.IGNORECASE)
+
+        nombre_actual = re.sub(r' +', ' ', nombre_actual).strip()
+        return nombre_actual
 
     def ordenar_archivo_diccionario(self):
         ruta_csv = self.obtener_ruta_diccionario_actual()
@@ -500,11 +636,18 @@ class TurboScribeCleanerApp:
                 return True
         return False
 
-    def limpiar_archivo(self, ruta_entrada, carpeta_limpio, carpeta_original, diccionario):
+    def limpiar_archivo(self, ruta_entrada, carpeta_limpio, carpeta_original, diccionario, reemplazos_archivos=None):
         try:
+            if reemplazos_archivos is None:
+                ruta_comunes = self.obtener_ruta_archivos_comunes_actual()
+                reemplazos_archivos = self.cargar_archivos_comunes(ruta_comunes)
+
             _, ext = os.path.splitext(ruta_entrada)
             archivo_original = os.path.basename(ruta_entrada)
-            nombre_base = os.path.splitext(archivo_original)[0]
+            nombre_base_crudo = os.path.splitext(archivo_original)[0]
+            
+            # Aplicar reemplazo de nombres de archivos comunes
+            nombre_base = self.transformar_nombre_archivo(nombre_base_crudo, reemplazos_archivos)
             
             if ext.lower() == '.docx':
                 doc = docx.Document(ruta_entrada)
@@ -518,11 +661,11 @@ class TurboScribeCleanerApp:
 
             if self.nombre_tiene_fecha(nombre_base):
                 nuevo_nombre_archivo = f"{nombre_base}{ext_salida}"
-                nuevo_nombre_original = archivo_original
+                nuevo_nombre_original = f"{nombre_base}{ext}"
             else:
                 fecha_prefijo = self.extraer_fecha(contenido)
                 nuevo_nombre_archivo = f"{fecha_prefijo}_{nombre_base}{ext_salida}"
-                nuevo_nombre_original = f"{fecha_prefijo}_{archivo_original}"
+                nuevo_nombre_original = f"{fecha_prefijo}_{nombre_base}{ext}"
 
             ruta_salida = os.path.join(carpeta_limpio, nuevo_nombre_archivo)
 
@@ -619,6 +762,9 @@ class TurboScribeCleanerApp:
             messagebox.showinfo("Información", "El diccionario está vacío o hubo un error al leerlo.")
             return
             
+        ruta_archivos_comunes = self.obtener_ruta_archivos_comunes_actual()
+        reemplazos_archivos = self.cargar_archivos_comunes(ruta_archivos_comunes)
+            
         carpeta_original = os.path.join(self.carpeta_salida_actual, "Original")
         carpeta_limpio = self.carpeta_salida_actual
         
@@ -647,7 +793,10 @@ class TurboScribeCleanerApp:
                                 if info.filename:
                                     zip_ref.extract(info, self.carpeta_actual)
                                     archivos_a_procesar.append(info.filename)
-                    ruta_destino_zip = os.path.join(carpeta_original, archivo)
+                    nombre_zip_base, ext_zip = os.path.splitext(archivo)
+                    nombre_zip_trans = self.transformar_nombre_archivo(nombre_zip_base, reemplazos_archivos)
+                    nuevo_nombre_zip = f"{nombre_zip_trans}{ext_zip}"
+                    ruta_destino_zip = os.path.join(carpeta_original, nuevo_nombre_zip)
                     if os.path.exists(ruta_destino_zip):
                         os.remove(ruta_destino_zip)
                     shutil.move(ruta_entrada, ruta_destino_zip)
@@ -660,7 +809,7 @@ class TurboScribeCleanerApp:
         
         for archivo in archivos_a_procesar:
             ruta_entrada_actual = os.path.join(self.carpeta_actual, archivo)
-            if self.limpiar_archivo(ruta_entrada_actual, carpeta_limpio, carpeta_original, diccionario):
+            if self.limpiar_archivo(ruta_entrada_actual, carpeta_limpio, carpeta_original, diccionario, reemplazos_archivos):
                 procesados += 1
                     
         if procesados > 0:
